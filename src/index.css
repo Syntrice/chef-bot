@@ -2,4 +2,9 @@
 
 @theme {
   --font-sans: 'Inter Variable', sans-serif;
+
+  /* colors */
+
+  --color-body: #fafaf8;
+  --color-header: #ffffff;
 }
