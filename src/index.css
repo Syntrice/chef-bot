@@ -8,3 +8,11 @@
   --color-body: #fafaf8;
   --color-header: #ffffff;
 }
+
+.textbox {
+  @apply bg-white p-2 border-black/20 border-1 rounded-lg;
+}
+
+.button {
+  @apply bg-black text-white py-2 px-10 rounded-lg;
+}
