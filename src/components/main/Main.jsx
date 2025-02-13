@@ -1,14 +1,24 @@
-import IngredientForm from "@/components/forms/IngredientForm";
+import IngredientForm from "@/components/ingredients/IngredientForm";
+import IngredientList from "@/components/ingredients/IngredientList";
+
+import React from "react";
 
 export default () => {
+
+    let [ingredients, setIngredients] = React.useState([])
     
     function onAddIngredient(ingredient) {
-        console.log(ingredient);
+
+        // Break clause for if ingredient already added to list
+        if (ingredients.includes(ingredient)) return;
+
+        setIngredients(previous => [ ...previous, ingredient])
     }
 
     return (
-        <main>
+        <main className="mx-auto max-w-3xl px-6">
             <IngredientForm onSubmit={onAddIngredient} />
+            <IngredientList ingredients={ingredients}/>
         </main>
     );
 };

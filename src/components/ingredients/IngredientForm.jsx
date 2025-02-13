@@ -8,7 +8,7 @@ export default ({ onSubmit }) => {
     }
     
     return (
-        <form onSubmit={submit} className="flex gap-5 justify-center py-20 flex-wrap">
+        <form onSubmit={submit} className="flex gap-5 py-15 flex-wrap">
             <input
                 className="textbox"
                 type="text"
