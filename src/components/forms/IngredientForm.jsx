@@ -1,5 +1,10 @@
+function onSubmit(e) {
+    e.preventDefault()
+    console.log("Ingredient Form Submitted!")
+}
+
 export default () => (
-    <form className="flex gap-5 justify-center py-20 flex-wrap">
+    <form onSubmit={onSubmit} className="flex gap-5 justify-center py-20 flex-wrap">
         <input
             className="textbox"
             type="text"
