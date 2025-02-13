@@ -1,7 +1,14 @@
-import IngredientForm from "@/components/forms/IngredientForm"
+import IngredientForm from "@/components/forms/IngredientForm";
 
-export default () => (
-    <main>
-        <IngredientForm/>
-    </main>
-)
+export default () => {
+    
+    function onAddIngredient(ingredient) {
+        console.log(ingredient);
+    }
+
+    return (
+        <main>
+            <IngredientForm onSubmit={onAddIngredient} />
+        </main>
+    );
+};
