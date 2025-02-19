@@ -8,6 +8,7 @@ import React from "react";
 export default () => {
 
     let [ingredients, setIngredients] = React.useState([])
+    let [recipieRecieved, setRecipieRecieved] = React.useState(false)
     
     function onAddIngredient(ingredient) {
 
@@ -15,6 +16,10 @@ export default () => {
         if (ingredients.includes(ingredient)) return;
 
         setIngredients(previous => [ ...previous, ingredient])
+    }
+
+    function onGetRecipie() {
+        setRecipieRecieved(prev => !prev)
     }
 
     return (
@@ -25,12 +30,14 @@ export default () => {
             </section>
             { ingredients.length >= 4 && 
                 <section id="recipieCallToActionSection" className="py-10">
-                <RecipieCallToAction />
+                <RecipieCallToAction onGetRecipie={onGetRecipie}/>
                 </section>
             }
-            <section id="recipieSection" className="py-10">
-                <Recipie/>
-            </section>
+            { recipieRecieved && 
+                <section id="recipieSection" className="py-10">
+                    <Recipie/>
+                </section>
+            }       
         </main>
     );
 };
