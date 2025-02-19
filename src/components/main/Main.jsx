@@ -20,7 +20,7 @@ export default () => {
         <main className="mx-auto max-w-3xl px-6">
             <IngredientForm onSubmit={onAddIngredient} />
             <IngredientList ingredients={ingredients}/>
-            { ingredients.length > 0 && <RecipieCallToAction />}
+            { ingredients.length >= 4 && <RecipieCallToAction />}
         </main>
     );
 };
