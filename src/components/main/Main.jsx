@@ -2,6 +2,7 @@ import IngredientForm from "@/components/ingredients/IngredientForm";
 import IngredientList from "@/components/ingredients/IngredientList";
 
 import React from "react";
+import RecipieCallToAction from "../call-to-action/RecipieCallToAction";
 
 export default () => {
 
@@ -19,6 +20,7 @@ export default () => {
         <main className="mx-auto max-w-3xl px-6">
             <IngredientForm onSubmit={onAddIngredient} />
             <IngredientList ingredients={ingredients}/>
+            { ingredients.length > 0 && <RecipieCallToAction />}
         </main>
     );
 };
