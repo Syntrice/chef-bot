@@ -1,8 +1,9 @@
 import IngredientForm from "@/components/ingredients/IngredientForm";
 import IngredientList from "@/components/ingredients/IngredientList";
+import Recipie from "@/components/recipie/Recipie";
+import RecipieCallToAction from "@/components/call-to-action/RecipieCallToAction";
 
 import React from "react";
-import RecipieCallToAction from "../call-to-action/RecipieCallToAction";
 
 export default () => {
 
@@ -18,9 +19,18 @@ export default () => {
 
     return (
         <main className="mx-auto max-w-3xl px-6">
-            <IngredientForm onSubmit={onAddIngredient} />
-            <IngredientList ingredients={ingredients}/>
-            { ingredients.length >= 4 && <RecipieCallToAction />}
+            <section id="ingredientsSection" className="pb-6">
+                <IngredientForm onSubmit={onAddIngredient} />
+                <IngredientList ingredients={ingredients}/>
+            </section>
+            { ingredients.length >= 4 && 
+                <section id="recipieCallToActionSection" className="py-10">
+                <RecipieCallToAction />
+                </section>
+            }
+            <section id="recipieSection" className="py-10">
+                <Recipie/>
+            </section>
         </main>
     );
 };
