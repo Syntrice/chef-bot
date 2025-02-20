@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/*"
+to = "https://app.syntrice.com/chef-bot"
+status = 200
+force = true
