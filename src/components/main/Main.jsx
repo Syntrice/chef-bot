@@ -46,7 +46,7 @@ export default () => {
 
     return (
         <main className="mx-auto max-w-3xl px-6">
-            <section id="infoSection" className="pt-10">
+            <section id="infoSection" className="pt-15">
                 <p className="text-faded">Welcome to Chef Bot, your personal recipie assistant! Enter at least four ingredients, and Chef Bot will generate a recipie for you!</p>
             </section>
             
