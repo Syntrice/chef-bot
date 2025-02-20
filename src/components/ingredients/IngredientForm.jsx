@@ -4,9 +4,8 @@ export default ({ onSubmit }) => {
         <form action={(formData) => onSubmit(formData.get("ingredient"))}
             className="flex gap-5 py-15 flex-wrap">
             <input
-                className="textbox"
+                className="textbox w-full max-w-md"
                 type="text"
-                size={40}
                 placeholder="e.g. oregano"
                 aria-label="Add ingredient"
                 name="ingredient"
