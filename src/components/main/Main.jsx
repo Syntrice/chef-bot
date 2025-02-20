@@ -2,9 +2,8 @@ import IngredientForm from "@/components/ingredients/IngredientForm";
 import IngredientList from "@/components/ingredients/IngredientList";
 import Recipie from "@/components/recipie/Recipie";
 import RecipieCallToAction from "@/components/call-to-action/RecipieCallToAction";
-
-import React from "react";
 import Spinner from "@/components/spinner/Spinner";
+import React from "react";
 
 export default () => {
 
@@ -12,7 +11,6 @@ export default () => {
     const [recipie, setRecipie] = React.useState("")
     const [spinner, setSpinner] = React.useState(false);
     const recipeSection = React.useRef(null)
-    const recipieCallToAction = React.useRef(null)
 
     React.useEffect(() => {
         if ((spinner || recipie) && recipeSection.current !== null) {
@@ -20,12 +18,6 @@ export default () => {
         }
     }, [spinner, recipie])
 
-    React.useEffect(() => {
-        if (ingredients.length == 4 && recipieCallToAction.current !== null) {
-            recipieCallToAction.current.scrollIntoView(false)
-        }
-    }, [ingredients])
-    
     function onAddIngredient(ingredient) {
 
         // Break clause for if ingredient already added to list
@@ -52,19 +44,22 @@ export default () => {
         setIngredients([]) // reset ingredients
     }
 
-
-
     return (
         <main className="mx-auto max-w-3xl px-6">
+            <section id="infoSection" className="pt-10">
+                <p className="text-faded">Welcome to Chef Bot, your personal recipie assistant! Enter at least four ingredients, and Chef Bot will generate a recipie for you!</p>
+            </section>
+            
             <section id="ingredientsSection" className="pb-6">
                 <IngredientForm onSubmit={onAddIngredient} />
-                <IngredientList ingredients={ingredients}/>
-            </section>
-            { ingredients.length >= 4 && 
-                <section id="recipieCallToActionSection" className="py-10" ref={recipieCallToAction}>
+                { ingredients.length >= 4 && 
+                <section id="recipieCallToActionSection" className="pb-15">
                     <RecipieCallToAction onGetRecipie={getRecipie}/>
                 </section>
-            }
+                }
+                <IngredientList ingredients={ingredients}/>
+            </section>
+
 
             { (spinner || recipie) &&
                 <section id="recipieSection" className="py-10" ref={recipeSection}>
