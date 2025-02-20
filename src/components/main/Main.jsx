@@ -19,7 +19,7 @@ export default () => {
     }
 
     async function getRecipie() {
-        const url = process.env.HF_FUNCTION_PATH ? process.env.HF_FUNCTION_PATH : "/chef-bot/get-hf-response" 
+        const url = import.meta.env.VITE_HF_FUNCTION_PATH ? import.meta.env.VITE_HF_FUNCTION_PATH : "/chef-bot/get-hf-response" 
         const response = await fetch(url, {
             method: "POST",
             body: JSON.stringify(ingredients)
