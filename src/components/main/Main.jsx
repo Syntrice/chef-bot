@@ -19,7 +19,9 @@ export default () => {
     }
 
     async function getRecipie() {
-        const url = "/.netlify/functions/get-hf-response" 
+        const isProduction = import.meta.env.PROD
+
+        const url = isProduction ? ".netlify/functions/get-hf-response" : "/.netlify/functions/get-hf-response"
         const response = await fetch(url, {
             method: "POST",
             body: JSON.stringify(ingredients)
