@@ -27,8 +27,3 @@ export default async (req: Request, context: Context) => {
         console.error(err.message)
     }
 };
-
-export const config: Config = {
-    path: "/chef-bot/get-hf-response"
-  };
-  
