@@ -20,7 +20,7 @@ export default () => {
 
     async function getRecipie() {
         const isProduction = import.meta.env.PROD
-
+        
         const url = isProduction ? ".netlify/functions/get-hf-response" : "/.netlify/functions/get-hf-response"
         const response = await fetch(url, {
             method: "POST",
