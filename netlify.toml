@@ -1,5 +1,0 @@
-[[redirects]]
-from = "/chef-bot/*"
-to = "https://app.syntrice.com/chef-bot/:splat"
-status = 200
-force = true
