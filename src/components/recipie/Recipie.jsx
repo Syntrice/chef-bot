@@ -1,7 +1,12 @@
-export default () => {
+export default ( {recipieContents }) => {
     return (
         <>
-            <h2 className="section-title">Suggested recipie:</h2>
+        <h2 className="section-title">Suggested recipie:</h2>
+        <article className="typography">
+            <p>{recipieContents}</p>
+        </article>
+             
+            {/* <h2 className="section-title">Suggested recipie:</h2>
             <article className="typography" aria-live="polite">
                 <p>Based on the ingredients you have available, I would recommend making a simple a delicious <strong>Beef Bolognese Pasta</strong>. Here is the recipe:</p>
                 <h3>Beef Bolognese Pasta</h3>
@@ -30,7 +35,7 @@ export default () => {
                     <li>Add the Bolognese sauce to the cooked pasta and toss to combine.</li>
                     <li>Serve hot, garnished with additional fresh basil or grated Parmesan cheese if desired.</li>
                 </ol>
-            </article>
+            </article> */}
         </>
     )
 }

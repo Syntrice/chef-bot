@@ -8,7 +8,7 @@ import React from "react";
 export default () => {
 
     let [ingredients, setIngredients] = React.useState([])
-    let [recipieRecieved, setRecipieRecieved] = React.useState(false)
+    let [recipie, setRecipie] = React.useState("")
     
     function onAddIngredient(ingredient) {
 
@@ -18,8 +18,13 @@ export default () => {
         setIngredients(previous => [ ...previous, ingredient])
     }
 
-    function onGetRecipie() {
-        setRecipieRecieved(prev => !prev)
+    async function getRecipie() {
+        const url = "/.netlify/functions/get-hf-response"
+        const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(ingredients)
+        })
+        setRecipie(await response.text())
     }
 
     return (
@@ -30,12 +35,12 @@ export default () => {
             </section>
             { ingredients.length >= 4 && 
                 <section id="recipieCallToActionSection" className="py-10">
-                <RecipieCallToAction onGetRecipie={onGetRecipie}/>
+                <RecipieCallToAction onGetRecipie={getRecipie}/>
                 </section>
             }
-            { recipieRecieved && 
+            { recipie && 
                 <section id="recipieSection" className="py-10">
-                    <Recipie/>
+                    <Recipie recipieContents={recipie}/>
                 </section>
             }       
         </main>
