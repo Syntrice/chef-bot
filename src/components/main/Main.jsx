@@ -12,17 +12,27 @@ export default () => {
     const [recipie, setRecipie] = React.useState("")
     const [spinner, setSpinner] = React.useState(false);
     const recipeSection = React.useRef(null)
+    const recipieCallToAction = React.useRef(null)
 
     React.useEffect(() => {
         if ((spinner || recipie) && recipeSection.current !== null) {
             recipeSection.current.scrollIntoView()
         }
     }, [spinner, recipie])
+
+    React.useEffect(() => {
+        if (ingredients.length == 4 && recipieCallToAction.current !== null) {
+            recipieCallToAction.current.scrollIntoView(false)
+        }
+    }, [ingredients])
     
     function onAddIngredient(ingredient) {
 
         // Break clause for if ingredient already added to list
-        if (ingredients.includes(ingredient)) return;
+        if (ingredients.includes(ingredient)) return
+
+        // Break clause for empty engredient
+        if (ingredient.length < 1) return
 
         setIngredients(previous => [ ...previous, ingredient])
     }
@@ -39,6 +49,7 @@ export default () => {
         
         setRecipie(await response.text())
         setSpinner(false)
+        setIngredients([]) // reset ingredients
     }
 
 
@@ -50,8 +61,8 @@ export default () => {
                 <IngredientList ingredients={ingredients}/>
             </section>
             { ingredients.length >= 4 && 
-                <section id="recipieCallToActionSection" className="py-10">
-                <RecipieCallToAction onGetRecipie={getRecipie}/>
+                <section id="recipieCallToActionSection" className="py-10" ref={recipieCallToAction}>
+                    <RecipieCallToAction onGetRecipie={getRecipie}/>
                 </section>
             }
 
