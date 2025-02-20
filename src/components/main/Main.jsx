@@ -19,7 +19,7 @@ export default () => {
     }
 
     async function getRecipie() {
-        const isProduction = import.meta.env.VITE_IS_PRODUCTION
+        const isProduction = import.meta.env.VITE_IS_PRODUCTION == "true"
         console.log("getting recipie. use production path? " + import.meta.env.VITE_IS_PRODUCTION)
         const url = isProduction ? "chef-bot/.netlify/functions/get-hf-response" : "/.netlify/functions/get-hf-response"
         const response = await fetch(url, {
