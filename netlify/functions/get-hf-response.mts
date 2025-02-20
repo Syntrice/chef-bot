@@ -1,4 +1,4 @@
-import type { Context } from "@netlify/functions";
+import type { Context, Config } from "@netlify/functions";
 import { HfInference } from "@huggingface/inference";
 
 const SYSTEM_PROMPT = `
@@ -27,3 +27,8 @@ export default async (req: Request, context: Context) => {
         console.error(err.message)
     }
 };
+
+export const config: Config = {
+    path: "/chef-bot/get-hf-response"
+  };
+  
